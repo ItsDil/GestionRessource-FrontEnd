@@ -25,9 +25,22 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/layouts/semi-dark-menu/css/light/loader.css",
+              "src/assets/bootstrap/css/bootstrap.min.css",
+              "src/assets/layouts/semi-dark-menu/css/light/plugins.css",
+              "src/assets/assets/css/light/dashboard/dash_1.css",
+              "src/assets/assets/css/light/authentication/auth-boxed.css",
+              "src/assets/assets/css/light/elements/alert.css"
+
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/layouts/semi-dark-menu/loader.js",
+              "src/assets/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/plugins/src/perfect-scrollbar/perfect-scrollbar.min.js",
+              "src/assets/plugins/src/mousetrap/mousetrap.min.js",
+              "src/assets/plugins/src/waves/waves.min.js"
+            ]
           },
           "configurations": {
             "production": {
