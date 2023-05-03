@@ -6,6 +6,8 @@
 =========================================
 */
 
+
+
 function checkall(clickchk, relChkbox) {
 
     var checker = $('#' + clickchk);
@@ -30,8 +32,9 @@ function checkall(clickchk, relChkbox) {
     This MultiCheck Function is recommanded for datatable
 */
 
-function multiCheck(tb_var) {
-    tb_var.on("change", ".chk-parent", function() {
+  function multiCheck(tb_var) {
+
+  tb_var.on("change", ".chk-parent", function() {
         var e=$(this).closest("table").find("td:first-child .child-chk"), a=$(this).is(":checked");
         $(e).each(function() {
             a?($(this).prop("checked", !0), $(this).closest("tr").addClass("active")): ($(this).prop("checked", !1), $(this).closest("tr").removeClass("active"))

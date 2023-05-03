@@ -2,6 +2,7 @@ import {AfterViewChecked, ChangeDetectorRef, Component, OnInit, Renderer2} from 
 import {LoginService} from "../../services/login.service";
 import {myapp} from '../../../assets/layouts/semi-dark-menu/app.js';
 import {UserStoreService} from "../../services/user-store.service";
+import {NavigationEnd, Router} from "@angular/router";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,16 +12,19 @@ export class HomeComponent implements OnInit {
 
   public users:any = [];
   public firstName :string="";
-  public role!: string;
+  public role!: string|void ;
+  public currentUrl!:any;
 
-  constructor(private loginService : LoginService, private userStore: UserStoreService) {}
+  constructor(private loginService : LoginService, private userStore: UserStoreService, private router:Router) {
+
+  }
 
   ngOnInit(): void {
-    this.loginService.getUsers().subscribe({
-      next : (data)=>{
-        this.users=data;
-      },error : (err) => {
 
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentUrl = event.url;
+        console.log('Current URL:', this.currentUrl);
       }
     });
 
@@ -33,19 +37,26 @@ export class HomeComponent implements OnInit {
     );
 
     this.userStore.getRoleFromStore().subscribe(value => {
-      const roleFromToken = this.loginService.getRoleFromToken();
+      let roleFromToken  = this.loginService.getRoleFromToken();
       this.role = value || roleFromToken;
     });
 
+    // location.reload();
+    const reloadAfterRedirect = sessionStorage.getItem('reloadAfterRedirect');
+    if (reloadAfterRedirect === 'true') {
+      sessionStorage.removeItem('reloadAfterRedirect');
+      window.location.replace(window.location.href);
+    }
 
   }
+
 
   logout(){
     this.loginService.signOut();
   }
 
 
-
-
-
+  handleToMemebers() {
+    this.currentUrl="/gestionMembers";
+  }
 }

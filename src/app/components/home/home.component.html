@@ -165,7 +165,7 @@
                 &#x1F44B;
               </div>
               <div class="media-body">
-                <h5> {{firstName}}</h5>
+                <h5> {{role}}</h5>
                 <p>Project Leader</p>
               </div>
             </div>
@@ -188,7 +188,7 @@
             </a>
           </div>
           <div class="dropdown-item">
-            <a (click)="logout()">
+            <a style="cursor: pointer" (click)="logout()">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> <span>Log Out</span>
             </a>
           </div>
@@ -230,176 +230,182 @@
       <div class="shadow-bottom"></div>
       <ul class="list-unstyled menu-categories" id="accordionExample">
         <li class="menu active">
-          <a href="#dashboard" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
-            <div class="">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-              <span>Dashboard</span>
-            </div>
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </div>
-          </a>
-          <ul class="collapse submenu list-unstyled show" id="dashboard" data-bs-parent="#accordionExample">
-            <li class="active">
-              <a href="index.html"> Analytics </a>
-            </li>
-            <li>
-              <a href="index2.html"> Sales </a>
-            </li>
-          </ul>
-        </li>
-        <ng-container *ngIf="role=='ADMIN'">
-          <li class="menu menu-heading">
-            <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>APPLICATIONS</span></div>
-          </li>
 
-          <li class="menu">
-            <a href="app-calendar.html" aria-expanded="false" class="dropdown-toggle">
-              <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                <span>Calendar</span>
-              </div>
-            </a>
-          </li>
+<!--          -->
+          <ng-container *ngIf="role=='RESP'">
 
-          <li class="menu">
-            <a href="app-chat.html" aria-expanded="false" class="dropdown-toggle">
-              <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                <span>Chat</span>
-              </div>
-            </a>
-          </li>
-
-          <li class="menu">
-            <a href="app-mailbox.html" aria-expanded="false" class="dropdown-toggle">
-              <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                <span>Mailbox</span>
-              </div>
-            </a>
-          </li>
-
-          <li class="menu">
-            <a href="app-todoList.html" aria-expanded="false" class="dropdown-toggle">
-              <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                <span>Todo List</span>
-              </div>
-            </a>
-          </li>
-
-          <li class="menu">
-            <a href="app-notes.html" aria-expanded="false" class="dropdown-toggle">
-              <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                <span>Notes</span>
-              </div>
-            </a>
-          </li>
-
-          <li class="menu">
-            <a href="app-scrumboard.html" aria-expanded="false" class="dropdown-toggle">
-              <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-plus"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
-                <span>Scrumboard</span>
-              </div>
-            </a>
-          </li>
-
-          <li class="menu">
-            <a href="app-contacts.html" aria-expanded="false" class="dropdown-toggle">
-              <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Contacts</span>
-              </div>
-            </a>
-          </li>
-
-          <li class="menu">
-            <a href="#invoice" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-              <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                <span>Invoice</span>
+            <a href="#GestionMember" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+              <div class=""  *ngIf="role=='RESP'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span *ngIf="role=='RESP'">Gestion Membres</span>
               </div>
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </div>
             </a>
-            <ul class="collapse submenu list-unstyled" id="invoice" data-bs-parent="#accordionExample">
-              <li>
-                <a href="app-invoice-list.html"> List </a>
-              </li>
-              <li>
-                <a href="app-invoice-preview.html"> Preview </a>
-              </li>
-              <li>
-                <a href="app-invoice-add.html"> Add </a>
-              </li>
-              <li>
-                <a href="app-invoice-edit.html"> Edit </a>
-              </li>
-            </ul>
-          </li>
 
-          <li class="menu">
-            <a href="#ecommerce" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <ul id="GestionMember" class="collapse submenu list-unstyled show" data-bs-parent="#accordionExample">
+
+                <li >
+                  <a routerLink="/home/gestionMembers"> Membres Dep </a>
+                </li>
+                <li>
+                  <a  routerLink="/home/addTechnicien" >Technicien </a>
+                </li>
+            </ul>
+          </ng-container>
+
+          <!--          -->
+          <ng-container *ngIf="role=='FOUR'">
+
+            <a href="#GestionProposition" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+              <div class="" *ngIf="role=='FOUR'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span >Gestion Propositions</span>
+
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+            </a>
+
+            <ul id="GestionProposition" class="collapse submenu list-unstyled show" data-bs-parent="#accordionExample">
+                <li >
+                  <a > Soumettre Prop </a>
+                </li>
+                <li>
+                  <a >Mes Propositions </a>
+                </li>
+            </ul>
+          </ng-container>
+
+          <!--          -->
+          <ng-container *ngIf="role=='ENSE'">
+
+            <a href="#GestionBesoin" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
               <div class="">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                <span>Ecommerce</span>
+                <span >Gestion Besoins</span>
               </div>
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </div>
             </a>
-            <ul class="collapse submenu list-unstyled" id="ecommerce" data-bs-parent="#accordionExample">
-              <li>
-                <a href="app-ecommerce-product-shop.html"> Shop </a>
-              </li>
-              <li>
-                <a href="app-ecommerce-product.html"> Product </a>
-              </li>
-              <li>
-                <a href="app-ecommerce-product-list.html"> List </a>
-              </li>
-              <li>
-                <a href="app-ecommerce-product-add.html"> Create </a>
-              </li>
-              <li>
-                <a href="app-ecommerce-product-edit.html"> Edit </a>
-              </li>
-            </ul>
-          </li>
 
-          <li class="menu">
-            <a href="#blog" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <ul class="collapse submenu list-unstyled " id="GestionBesoin" data-bs-parent="#accordionExample">
+              <li >
+                <a routerLink="/home/gestionBesoins" >Ajouter Besoin</a>
+              </li>
+            </ul>
+
+            <a   href="#GestionPanne" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
               <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pen-tool"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
-                <span>Blog</span>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="30" height="30" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M508.171 63.975c-1.858-6.161-9.626-8.099-14.158-3.567L464.422 90H422V47.578l29.595-29.606c4.552-4.556 2.576-12.297-3.536-14.156C439.682 1.271 430.99.185 422.087.185c-24.126 0-46.743 9.16-63.721 26.182-20.801 20.786-30.117 50.508-24.961 79.526l1.377 7.69-221.2 221.199c-8.935-1.597-14.316-2.769-23.467-2.769-23.76 0-47.007 9.609-63.765 26.353C2.7 382.032-5.635 416.684 3.811 448.025c1.862 6.174 9.616 8.108 14.158 3.567L47.563 422H90.2v42.437l-29.8 29.599c-4.551 4.547-2.588 12.301 3.543 14.16C72.3 510.724 80.979 512 89.867 512c56.022 0 98.561-50.543 88.726-105.894l-1.377-7.69 221.185-221.199c8.786 1.57 14.395 2.779 23.467 2.754 23.804 0 47.036-9.595 63.765-26.338 23.666-23.654 31.99-58.297 22.538-89.658z" fill="#ffffff" data-original="#000000" class=""></path><path d="M490.071 383.963 384.87 279.801c-7.018-7.006-15.743-12.491-25.3-16.317l-97.083 97.083c3.825 9.56 9.315 18.292 16.328 25.318l105.187 104.148c29.238 29.238 76.697 29.342 106.069 0 29.239-29.253 29.239-76.831 0-106.07zm-42.758 63.311c-5.86 5.86-15.351 5.86-21.211 0l-73.707-72.668c-5.859-5.859-5.859-15.352 0-21.211s15.352-5.859 21.211 0l73.707 72.668c5.859 5.859 5.859 15.351 0 21.211zM128.28 85.858l-.022.007 13.528-13.528c3.921-3.925 3.097-10.47-1.641-13.312L48.571 2.138A14.996 14.996 0 0 0 30.25 4.394L4.394 30.25a14.999 14.999 0 0 0-2.252 18.329l56.926 91.53c2.852 4.744 9.414 5.535 13.31 1.635l13.473-13.471 95.911 95.911 42.422-42.422-95.904-95.904z" fill="#ffffff" data-original="#000000" class=""></path></g></svg>
+                <span >Gestion Pannes</span>
               </div>
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </div>
             </a>
-            <ul class="collapse submenu list-unstyled" id="blog" data-bs-parent="#accordionExample">
-              <li>
-                <a href="app-blog-grid.html"> Grid </a>
-              </li>
-              <li>
-                <a href="app-blog-list.html"> List </a>
-              </li>
-              <li>
-                <a href="app-blog-post.html"> Post </a>
-              </li>
-              <li>
-                <a href="app-blog-create.html"> Create </a>
-              </li>
-              <li>
-                <a href="app-blog-edit.html"> Edit </a>
+
+            <ul class="collapse submenu list-unstyled " id="GestionPanne" data-bs-parent="#accordionExample">
+              <li >
+                <a routerLink="/home/signalPanne" >Signaler Panne</a>
               </li>
             </ul>
-          </li>
-        </ng-container>
+          </ng-container>
+
+          <!--          -->
+          <ng-container *ngIf="role=='TECH'">
+
+
+            <a   href="#GestionPanneTech" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+              <div class="">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="30" height="30" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M508.171 63.975c-1.858-6.161-9.626-8.099-14.158-3.567L464.422 90H422V47.578l29.595-29.606c4.552-4.556 2.576-12.297-3.536-14.156C439.682 1.271 430.99.185 422.087.185c-24.126 0-46.743 9.16-63.721 26.182-20.801 20.786-30.117 50.508-24.961 79.526l1.377 7.69-221.2 221.199c-8.935-1.597-14.316-2.769-23.467-2.769-23.76 0-47.007 9.609-63.765 26.353C2.7 382.032-5.635 416.684 3.811 448.025c1.862 6.174 9.616 8.108 14.158 3.567L47.563 422H90.2v42.437l-29.8 29.599c-4.551 4.547-2.588 12.301 3.543 14.16C72.3 510.724 80.979 512 89.867 512c56.022 0 98.561-50.543 88.726-105.894l-1.377-7.69 221.185-221.199c8.786 1.57 14.395 2.779 23.467 2.754 23.804 0 47.036-9.595 63.765-26.338 23.666-23.654 31.99-58.297 22.538-89.658z" fill="#ffffff" data-original="#000000" class=""></path><path d="M490.071 383.963 384.87 279.801c-7.018-7.006-15.743-12.491-25.3-16.317l-97.083 97.083c3.825 9.56 9.315 18.292 16.328 25.318l105.187 104.148c29.238 29.238 76.697 29.342 106.069 0 29.239-29.253 29.239-76.831 0-106.07zm-42.758 63.311c-5.86 5.86-15.351 5.86-21.211 0l-73.707-72.668c-5.859-5.859-5.859-15.352 0-21.211s15.352-5.859 21.211 0l73.707 72.668c5.859 5.859 5.859 15.351 0 21.211zM128.28 85.858l-.022.007 13.528-13.528c3.921-3.925 3.097-10.47-1.641-13.312L48.571 2.138A14.996 14.996 0 0 0 30.25 4.394L4.394 30.25a14.999 14.999 0 0 0-2.252 18.329l56.926 91.53c2.852 4.744 9.414 5.535 13.31 1.635l13.473-13.471 95.911 95.911 42.422-42.422-95.904-95.904z" fill="#ffffff" data-original="#000000" class=""></path></g></svg>
+                <span >Gestion Pannes</span>
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+            </a>
+
+            <ul class="collapse submenu list-unstyled " id="GestionPanneTech" data-bs-parent="#accordionExample">
+              <li >
+                <a routerLink="/home/gererPanneTech" >Traiter une Panne</a>
+              </li>
+            </ul>
+          </ng-container>
+
+          <!--          -->
+          <ng-container *ngIf="role=='CHDP'">
+
+
+            <a routerLink="appelOffre" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+              <div class="">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  width="55" height="55" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path fill-rule="evenodd" d="m426.039 145.866-53.137-30.679-.434 1.395a19.125 19.125 0 0 1 4.501 12.343v11.245c0 8.072-5.005 14.998-12.074 17.836-2.886 6.762-9.602 11.513-17.406 11.513h-14.287c-7.805 0-14.521-4.751-17.407-11.513-7.069-2.839-12.074-9.764-12.074-17.836v-11.245c0-4.695 1.693-9.002 4.501-12.343l-.438-1.409-53.161 30.692 85.708 49.484zm-85.694-97.7c17.406 0 31.516 14.11 31.516 31.516 0 14.795-7.684 16.411-11.956 30.154-.704-.079-1.42-.12-2.145-.12h-10.414V89.569l10.014-5.782a6.984 6.984 0 0 0-7-12.086l-10.028 5.79-10.028-5.79a6.97 6.97 0 0 0-6.946 12.086l9.987 5.766v20.162H322.93c-.725 0-1.441.042-2.145.12-4.272-13.743-11.956-15.359-11.956-30.154 0-17.405 14.11-31.515 31.516-31.515zm7-18.534a7 7 0 1 1-14 0V19.5a7 7 0 1 1 14 0zm45.411 34.298a6.97 6.97 0 0 1-6.946-12.086l8.775-5.066a6.97 6.97 0 0 1 6.946 12.086zm-18.114-23.227 5.066-8.775a6.984 6.984 0 0 0-12.086-7l-5.066 8.775a6.984 6.984 0 0 0 12.086 7zm-79.763 11.141a6.97 6.97 0 0 1-6.946 12.086l-8.775-5.066a6.97 6.97 0 0 1 6.946-12.086zm23.254-18.141-5.066-8.775a6.984 6.984 0 0 0-12.086 7l5.066 8.775a6.984 6.984 0 0 0 12.086-7zm4.797 90.012h34.828c2.866 0 5.21 2.344 5.21 5.21v11.245c0 2.866-2.345 5.21-5.21 5.21h-5.356v5.224a4.93 4.93 0 0 1-4.915 4.915H333.2a4.93 4.93 0 0 1-4.915-4.915v-5.224h-5.355c-2.866 0-5.21-2.344-5.21-5.21v-11.245c.001-2.865 2.345-5.21 5.21-5.21zm21.148 249.442c-5.356 19.991-26.148 32.007-46.138 26.657l-86.916-23.289a6.991 6.991 0 0 1 3.61-13.508l86.888 23.28c12.75 3.226 25.48-4.116 29.046-16.752 3.249-12.834-4.276-25.68-16.752-29.022L248.423 323a6.953 6.953 0 0 1-2.548-1.282c-20.744-14.656-36.147-19.974-50.255-19.611-14.273.368-28.125 6.604-45.103 14.906a3973.878 3973.878 0 0 1-46.214 22.206l40.507 97.265 15.583-7.576c11.431-5.557 23.153-6.541 35.356-2.998l72.122 20.941c19.041 5.529 43.881-4.137 63.585-11.806 46.521-18.099 93.175-35.917 139.756-53.867 10.89-4.196 18.743-15.031 20.791-25.984 1.456-7.787-.056-15.77-6.632-20.788-8.236-6.284-23.89-8.153-49.569-.62l-90.579 26.573a37.313 37.313 0 0 1-1.145 12.798zM133.372 483.973l-34.674 14.398c-7.523 3.124-16.205-.458-19.337-7.978l-58.714-140.99a14.732 14.732 0 0 1 7.986-19.357l34.674-14.398c7.523-3.124 16.205.458 19.337 7.978l58.715 140.989a14.733 14.733 0 0 1-7.987 19.358zm157.142-259.862-85.708-49.484 35.878-20.714 85.709 49.484zm-42.831-8.601 39.331 22.708a6.982 6.982 0 0 0 7.076-.044l39.255-22.663v90.885l-85.662-49.457zm192.336-61.589 35.864 20.706-85.722 49.492-35.864-20.706zm-92.675 61.573 38.955 22.491a6.986 6.986 0 0 0 7.376.233l39.33-22.708v41.413l-85.661 49.456z" clip-rule="evenodd" fill="#ffffff" data-original="#000000" class=""></path></g></svg>
+                <span >Appel D'Offre</span>
+              </div>
+
+            </a>
+          </ng-container>
+
+
+
+        </li>
+
+
+
+        <li class="menu menu-heading">
+          <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>APPLICATIONS</span>
+          </div>
+        </li>
+
+
+        <li class="menu">
+          <a href="app-calendar.html" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Calendar</span>
+            </div>
+          </a>
+        </li>
+
+
+
+        <li class="menu">
+          <a href="app-mailbox.html" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>Mailbox</span>
+            </div>
+          </a>
+        </li>
+
+
+
+
+
+        <li class="menu">
+          <a href="app-contacts.html" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Contacts</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="menu">
+          <a href="app-contacts.html" aria-expanded="false" class="dropdown-toggle">
+            <div class="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> <span>Profile</span>
+
+            </div>
+          </a>
+        </li>
+
+
+
 
       </ul>
 
@@ -411,16 +417,37 @@
   <!--  BEGIN CONTENT AREA  -->
   <div id="content" class="main-content">
 
-      <!--  BEGIN FOOTER  -->
-      <div class="footer-wrapper">
-        <div class="footer-section f-section-1">
-          <p class="">Copyright © <span class="dynamic-year">2022</span> <a target="_blank" href="https://designreset.com/cork-admin/">DesignReset</a>, All rights reserved.</p>
-        </div>
-        <div class="footer-section f-section-2">
-          <p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></p>
-        </div>
-      </div>
-      <!--  END FOOTER  -->
+
+          <router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    &lt;!&ndash;  BEGIN FOOTER  &ndash;&gt;-->
+<!--      <div class="footer-wrapper">-->
+<!--        <div class="footer-section f-section-1">-->
+<!--          <p class="">Copyright © <span class="dynamic-year">2022</span> <a target="_blank" href="https://designreset.com/cork-admin/">DesignReset</a>, All rights reserved.</p>-->
+<!--        </div>-->
+<!--        <div class="footer-section f-section-2">-->
+<!--          <p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash;  END FOOTER  &ndash;&gt;-->
 
 <!--    <ul *ngFor="let user of users">-->
 <!--      <li>{{user.firstname}}:-->
@@ -433,6 +460,7 @@
     <!--  END FOOTER  -->
   </div>
   <!--  END CONTENT AREA  -->
+
 
 </div>
 

@@ -11,13 +11,26 @@ import { HomeComponent } from './components/home/home.component';
 import {NgToastModule} from "ng-angular-popup";
 import {TokenInterceptor} from "./interceptors/token.interceptor";
 import { Routes, RouterModule } from '@angular/router';
-
+import { MembersComponent } from './components/members/members.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { BesoinsComponent } from './components/besoins/besoins.component';
+import { SignalePanneComponent } from './components/signale-panne/signale-panne.component';
+import { AddTechnicienComponent } from './components/add-technicien/add-technicien.component';
+import { GererPanneTechComponent } from './components/gerer-panne-tech/gerer-panne-tech.component';
+import { AppelOffreComponent } from './components/appel-offre/appel-offre.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    MembersComponent,
+    SidebarComponent,
+    BesoinsComponent,
+    SignalePanneComponent,
+    AddTechnicienComponent,
+    GererPanneTechComponent,
+    AppelOffreComponent
   ],
     imports: [
         BrowserModule,

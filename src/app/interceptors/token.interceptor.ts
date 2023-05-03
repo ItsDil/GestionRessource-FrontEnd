@@ -33,7 +33,7 @@ export class TokenInterceptor implements HttpInterceptor {
           console.log("state of error : "+err.status);
           this.loginService.clearLocalStorage();
 
-          if(err.status == 403){
+          if(err.status == 401){
 
             this.toast.warning({detail:"Warning", summary:"Token is Expired, Please LogIn Again ! "});
             this.router.navigate(['signin']);

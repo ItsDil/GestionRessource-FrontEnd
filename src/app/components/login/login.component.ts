@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../../services/login.service";
-import {user} from "../../model/user";
+import {roles, User} from "../../model/User";
 import {Router} from "@angular/router";
 import {NgToastService} from "ng-angular-popup";
 import {UserStoreService} from "../../services/user-store.service";
@@ -14,7 +14,7 @@ import {UserStoreService} from "../../services/user-store.service";
 export class LoginComponent implements OnInit{
 
   loginFormGroup!: FormGroup;
-   user! : user;
+   user! : User;
    auth!: string;
 
   constructor(private fb : FormBuilder,
@@ -46,14 +46,22 @@ export class LoginComponent implements OnInit{
         this.loginService.storeRefreshToken(data.refresh_token);
 
         const tokenPayload = this.loginService.decodedToken();
-        this.userStore.setFirstNameForStore(tokenPayload.firstName);
-        this.userStore.setRoleForStore(tokenPayload.role);
 
+        this.userStore.setFirstNameForStore(tokenPayload.firstName);
+
+        tokenPayload.roles.forEach((role:roles)=>{
+          this.userStore.setRoleForStore(role.rolename);
+        });
+
+        sessionStorage.setItem('reloadAfterRedirect', 'true');
         this.router.navigate(["home"])
+
+
+
       }
       ,error : (err)=>{
-
-        this.toast.error({detail:"Error",summary:'Bad Credentials !!'});
+        console.log("hhhh : "+err.status)
+        this.toast.error({detail:"Error",summary:"Bad Credantial !!!"});
 
       }
     })

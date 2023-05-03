@@ -1,0 +1,165 @@
+
+
+<div class="layout-px-spacing" style="margin-right: 40px; margin-left: 40px;">
+
+<!--    <div class="middle-content container-xxl p-0">-->
+
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb-wrapper-content mb-1 mt-2 d-flex start" style="background:white; width: 100%; ">
+          <nav class="breadcrumb-style-two  mb-2" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span class="inner-text">Home</span></a></li>
+              <li class="breadcrumb-item"><a href="#">Gestion Besoins</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Ajouter une Besoin</li>
+            </ol>
+          </nav>
+        </div>
+        <!-- /BREADCRUMB -->
+
+        <div class="row mb-4 layout-spacing layout-top-spacing" >
+
+          <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
+            <div class="widget-content widget-content-area blog-create-section" style="padding: 20px;">
+              <div class="col-md-12">
+                <span class="badge badge-info mb-2 " style="width: 100%; height: 35px; font-size: 22px">Besoin</span>
+              </div>
+
+              <div class="row mb-4 ">
+                <form [formGroup]="addBesoinForm" class="row g-3" (ngSubmit)="handleAddBesoinToLst()">
+
+                  <div class="form-group col-12">
+                    <label class="form-label">Date De Demande</label>
+                    <div class="form-group mb-0">
+      <!--                <input id="basicFlatpickr" value="Date ici"-->
+      <!--                       class="form-control flatpickr flatpickr-input" type="text"-->
+      <!--                       placeholder="Select Date.." formControlName="dateAjout" >-->
+                        <input type="text" class="form-control" #flatpickrInput placeholder="Select date" formControlName="dateAjout">
+
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Type Ressource</label>
+
+                    <select class="form-select" aria-label="Default select example" formControlName="typeRessource">
+                      <option value="Imprimante">Imprimante</option>
+                      <option value="Ordinateur">Ordinateur</option>
+                    </select>
+                  </div>
+
+                  <!--   ***********************   Ressources   *********************    -->
+
+                    <div class="col-md-12 mt-5">
+                      <span class="badge badge-info mb-2 " style="width: 100%; height: 35px; font-size: 22px">Ressource</span>
+                    </div>
+                    <h5 class="mb-4 mt-4">Informations</h5>
+
+                  <ng-container *ngIf="this.addBesoinForm.get('typeRessource')!.value =='Ordinateur' ">
+                    <div class="row mb-4">
+                      <div class="col-xxl-6 mb-4">
+                        <label >CPU</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="cpu">
+                          <option value="i5">i5</option>
+                          <option value="i7">i7</option>
+                        </select>
+                      </div>
+                      <div class="col-xxl-6">
+                        <label >Ecran</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="ecran">
+                          <option value="15.6">15.6"</option>
+                          <option value="16">16"</option>
+                        </select>
+                      </div>
+                      <div class="col-xxl-6">
+                        <label >RAM</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="ram">
+                          <option value="8">8</option>
+                          <option value="16">16</option>
+                        </select>
+                      </div>
+                      <div class="col-xxl-6">
+                        <label >Stockage Disque Dur</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="stockage">
+                          <option value="256">256</option>
+                          <option value="512">512</option>
+                        </select>
+                      </div>
+                    </div>
+                  </ng-container>
+
+                  <ng-container *ngIf="this.addBesoinForm.get('typeRessource')!.value =='Imprimante' ">
+                    <div class="row mb-4">
+                      <div class="col-xxl-6 mb-4">
+                        <label >Resolution</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="resolution">
+                          <option value="1960_1080">1960 - 1080</option>
+                          <option value="1080_720">1080-720</option>
+                        </select>
+                      </div>
+                      <div class="col-xxl-6">
+                        <label >Vitesse</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="vitesse">
+                          <option value="20">20</option>
+                          <option value="50">50</option>
+                        </select>
+                      </div>
+
+                    </div>
+                  </ng-container>
+
+                  <button  [disabled]="!isValideInpImp()" type="submit" class="btn btn-primary col-1" style="margin-left: 90%">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                  </button>
+                </form>
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+          <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0 mt-4">
+            <button [disabled]="ressources.length <=0" (click)="handleSaveBesoin()" class="btn btn-primary" style="margin-left: 524px;"> Envoyer</button>
+
+            <div id="todo-inbox" class="accordion todo-inbox">
+
+              <div class="search">
+                <label>Vos Ressources</label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu mail-menu d-lg-none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+              </div>
+
+              <div class="todo-box">
+
+                <div id="ct" class="todo-box-scroll">
+                  <div class="todo-item all-list">
+
+                    <div *ngFor="let ress of ressources" class="todo-item-inner" style="background: white; border-radius:6px; border-bottom: 2px solid #4361ee;">
+                      <div class="priority-dropdown custom-dropdown-icon">
+                        <a class="dropdown-toggle" href="#"  id="dropdownMenuLink-2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                          <svg *ngIf="ress?.cpu==null" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                          <svg *ngIf="ress?.resolution==null" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-monitor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </a>
+                      </div>
+
+                      <div class="todo-content" >
+                        <h3 *ngIf="ress?.cpu==null"  class="todo-heading">Imprimante</h3>
+                        <h3 *ngIf="ress?.resolution==null"  class="todo-heading">Ordinateur</h3>
+                      </div>
+                    </div>
+
+
+                  </div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+<!--    </div>-->
+</div>
+
+

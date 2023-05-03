@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {user} from "../model/user";
+import {roles, User} from "../model/User";
 import {jwt_} from "../model/Jwt_";
 import {Router} from "@angular/router";
 import {JwtHelperService} from '@auth0/angular-jwt'
@@ -21,10 +21,10 @@ export class LoginService {
   }
 
 
-  public sinIn(userEmail:string, password:string):Observable<jwt_>{
+  public sinIn(email:string, password:string):Observable<jwt_>{
 
-    // return this.http.get<user>(this.backHost+"/login?userEmail="+userEmail+"&password="+password);
-    let Data = {email:userEmail, password: password};
+    // return this.http.get<User>(this.backHost+"/login?email="+email+"&password="+password);
+    let Data = {email:email, password: password};
     return this.http.post<jwt_>(this.backHost+"/auth/authenticate",Data);
   }
 
@@ -59,9 +59,7 @@ export class LoginService {
     return !!localStorage.getItem("token")
   }
 
-  getUsers(){
-    return this.http.get<any>(this.backHost+"/demo-Controller/users")
-  }
+
 
   decodedToken(){
     const jwtHealper = new JwtHelperService()
@@ -75,10 +73,21 @@ export class LoginService {
       return this.userPayload.firstName
   }
 
+  getIdMemeber(){
+    if(this.userPayload){
+      return this.userPayload.id
+    }
+  }
 
-  getRoleFromToken(){
-    if(this.userPayload)
-      return this.userPayload.role;
+  getRoleFromToken():any{
+    if(this.userPayload){
+      let rolename:string="";
+      this.userPayload.roles.forEach((role:roles)=>{
+        rolename = role.rolename;
+
+      });
+      return rolename;
+    }
   }
 
 
