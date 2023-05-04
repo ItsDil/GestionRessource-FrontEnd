@@ -57,7 +57,7 @@ export class BesoinsComponent implements OnInit{
     {
       let imprimant:Imprimante={
         id:-1,
-        dateAjout:this.addBesoinForm.get('dateAjout')!.value,
+        // dateAjout:this.addBesoinForm.get('dateAjout')!.value,
         vitesse:this.addBesoinForm.get('vitesse')!.value,
         resolution:this.addBesoinForm.get('resolution')!.value
       };
@@ -69,7 +69,7 @@ export class BesoinsComponent implements OnInit{
     {
       let ordinateur:Ordinateur={
         id:-1,
-        dateAjout:this.addBesoinForm.get('dateAjout')!.value,
+        // dateAjout:this.addBesoinForm.get('dateAjout')!.value,
         cpu:this.addBesoinForm.get('cpu')!.value,
         stockage:this.addBesoinForm.get('stockage')!.value,
         ecran:this.addBesoinForm.get('ecran')!.value,

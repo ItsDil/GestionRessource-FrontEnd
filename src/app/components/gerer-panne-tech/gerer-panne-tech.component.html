@@ -15,20 +15,20 @@
     </div>
     <!-- /BREADCRUMB -->
 
-    <form >
+    <form [formGroup]="formFilterPanne">
       <div class="row mt-5">
         <div class="col-xxl-3 ">
           <label >Depatement</label>
-          <select class="form-select" aria-label="Default select example" >
+          <select  (click)="handleShowPanneByDep()" class="form-select" aria-label="Default select example" formControlName="byDepart">
             <option value="Informatique">Informatique</option>
             <option value="Mathematique">Mathematique</option>
           </select>
         </div>
         <div class="col-xxl-3">
           <label >Status</label>
-          <select class="form-select" aria-label="Default select example" >
+          <select (click)="handleShowPanneByStatus()" class="form-select" aria-label="Default select example"  formControlName="byStatus">
             <option value="Panne">Panne </option>
-            <option value="Traite">Traite </option>
+            <option value="Traitée">Traitée </option>
           </select>
         </div>
 
@@ -47,48 +47,127 @@
             </th>
             <th class="" scope="col">ID</th>
             <th scope="col">Enseignant</th>
+            <th scope="col">Email</th>
             <th class="" scope="col">Type Ressource</th>
             <th class="" scope="col">Date Affecation</th>
-            <th class="text-center" scope="col">Status</th>
+            <th class="text-center" scope="col">Action</th>
+
           </tr>
           </thead>
-          <tbody id ="openModelShowRess">
+          <tbody id ="openModelGeneConstat">
 <!--          <tr *ngFor="let ress of ressources" (click)="handleShowRess(ress)">-->
-          <tr>
+          <tr *ngFor="let panne of showPannesFiltred!.pannes">
             <td>
               <div class="form-check form-check-primary">
                 <input class="form-check-input noBorder_child" type="checkbox">
               </div>
             </td>
-            <td>1</td>
+            <td>{{panne.idPanne}}</td>
             <td>
-              <span class="table-inner-text">Gholam</span>
+              <span class="table-inner-text">{{panne.firstname}}</span>
             </td>
-            <td class="">Imprimante</td>
+            <td>
+              <span class="table-inner-text">{{panne.email}}</span>
+            </td>
+            <ng-container *ngIf="panne.ressource.vitesse">
+              <td class="">Imprimante</td>
+            </ng-container>
+            <ng-container *ngIf="panne.ressource.cpu">
+              <td class="">Ordinateur</td>
+            </ng-container>
             <td>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              <span class="table-inner-text">29 Apr</span>
+              <span class="table-inner-text">{{panne.datePanne}}</span>
             </td>
             <td class="text-center">
-              <button class="badge badge-success" style="border: none;">
-                <span>?????????</span>
+              <button  (click)="handleSetStatus(panne); " class="bs-tooltip mb-4 rounded" title="Changer l'etat"  [ngClass]="panne.isThreated==false?'badge badge-danger':'badge badge-success'" style="border: none; width: 80px; font-size: 14px;">
+                <span *ngIf="panne.isThreated==false"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"   width="24" height="24" x="0" y="0" viewBox="0 0 512.002 512.002" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M366.376 271.127h-60.375l72.375-96.5a15 15 0 0 0-12-24H325.77l35.1-131.764a15 15 0 0 0-7.508-17.135 14.994 14.994 0 0 0-18.375 3.512l-180.75 210.875a15 15 0 0 0 11.389 24.761h40.375l-72.375 96.5a15 15 0 0 0 12 24h40.606L151.131 493.14a15 15 0 0 0 25.36 14.204l200.75-210.875a15 15 0 0 0-10.865-25.342z" fill="#ffffff" data-original="#000000" class=""></path></g></svg>Panne</span>
+                <span *ngIf="panne.isThreated==true"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"  width="24" height="24" x="0" y="0" viewBox="0 0 417.813 417" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M159.988 318.582c-3.988 4.012-9.43 6.25-15.082 6.25s-11.094-2.238-15.082-6.25L9.375 198.113c-12.5-12.5-12.5-32.77 0-45.246l15.082-15.086c12.504-12.5 32.75-12.5 45.25 0l75.2 75.203L348.104 9.781c12.504-12.5 32.77-12.5 45.25 0l15.082 15.086c12.5 12.5 12.5 32.766 0 45.246zm0 0" fill="#ffffff" data-original="#000000" class=""></path></g></svg>Traitée</span>
+              </button>
+              <button (click)="handleGenConstat(panne)" class="badge badge-success bs-tooltip mb-4 rounded" title="Génerer le constat" style="margin-left: 20px; border: none; width: 80px; font-size: 14px;">
+                <span>Constat</span>
               </button>
             </td>
 
-            <!--
-                        <td *ngIf="authenService.hasRole('ADMIN')">
-                          <button (click)="handleSetPromotion(p)" [ngClass]="p.promotion==true?'btn btn-warning':'btn btn-success'">
-                            <span *ngIf="p.promotion==true">Promo Off</span>
-                            <span *ngIf="p.promotion==false">Promo On</span>
-                          </button>
-                        </td>
-            -->
           </tr>
           </tbody>
         </table>
       </div>
 
     </div>
+  <div id="zoomupModal_GeneConstat"  class="modal animated zoomInUp custo-zoomInUp" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" style="width: 700px">
+        <div class="modal-header">
+          <h5 class="modal-title">Génerer le constat</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <form >
+
+              <ng-container *ngIf="panneConstat">
+
+                <div *ngIf="panneConstat.ressource.vitesse" class="row g-4 mb-5">
+                  <div class="col-md-12">
+                    <label >Type Ressource</label>
+                    <input value="Imprimante"  type="text" class="form-control" style="color: black!important;" readonly >
+
+                  </div>
+                  <div class="col-md-6">
+                    <label >Resolution</label>
+                    <input value="{{panneConstat.ressource.resolution}}"  type="text" class="form-control" style="color: black!important;"  readonly>
+
+                  </div>
+                  <div class="col-md-6">
+                    <label >Vitesse</label>
+                    <input value="{{panneConstat.ressource.vitesse}}" type="text" class="form-control"  style="color: black!important;" readonly >
+
+                  </div>
+                </div>
+                <div *ngIf="panneConstat.ressource.cpu" class="row g-4 mb-5">
+                  <div class="col-md-12">
+                    <label >Type Ressource</label>
+                    <input value="Ordinateur"  type="text" class="form-control" style="color: black!important;"  readonly >
+
+                  </div>
+                  <div class="col-md-6">
+                    <label >RAM</label>
+                    <input value="{{panneConstat.ressource.ram}}"  type="text" class="form-control" style="color: black!important;"  readonly >
+
+                  </div>
+                  <div class="col-md-6">
+                    <label >Ecran</label>
+                    <input value="{{panneConstat.ressource.ecran}}" type="text" class="form-control" style="color: black!important;"  readonly>
+
+                  </div>
+                  <div class="col-md-6">
+                    <label >Stockage</label>
+                    <input value="{{panneConstat.ressource.stockage}}" type="text" class="form-control" style="color: black!important;"  readonly >
+                  </div>
+                  <div class="col-md-6">
+                    <label >CPU</label>
+                    <input value="{{panneConstat.ressource.cpu}}" type="text" class="form-control" style="color: black!important;"  readonly >
+                  </div>
+                </div>
+
+              </ng-container>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+              <div class="modal-footer md-button">
+                <!--              <button class="btn btn-light-dark" data-bs-dismiss="modal">Discard</button>-->
+                <button   type="submit" class="btn btn-primary">Envoie</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
 
 
 </div>

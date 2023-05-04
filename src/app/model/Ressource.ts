@@ -1,6 +1,6 @@
 export interface Ressource{
   id:number;
-  dateAjout:String;
+  // dateAjout:String;
 }
 export interface Ordinateur extends Ressource{
   cpu:String;
