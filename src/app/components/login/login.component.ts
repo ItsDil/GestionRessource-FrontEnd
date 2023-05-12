@@ -49,6 +49,10 @@ export class LoginComponent implements OnInit{
 
         this.userStore.setFirstNameForStore(tokenPayload.firstName);
 
+        let roles: any[] = tokenPayload!.roles.map((role: { authority: any; }) => role.authority);
+        this.userStore.setRoles(roles);
+
+
         tokenPayload.roles.forEach((role:roles)=>{
           this.userStore.setRoleForStore(role.rolename);
         });

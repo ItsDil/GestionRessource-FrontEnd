@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GererConstatComponent } from './gerer-constat.component';
+import { ErrorsComponent } from './errors.component';
 
-describe('GererConstatComponent', () => {
-  let component: GererConstatComponent;
-  let fixture: ComponentFixture<GererConstatComponent>;
+describe('ErrorsComponent', () => {
+  let component: ErrorsComponent;
+  let fixture: ComponentFixture<ErrorsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GererConstatComponent ]
+      declarations: [ ErrorsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GererConstatComponent);
+    fixture = TestBed.createComponent(ErrorsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

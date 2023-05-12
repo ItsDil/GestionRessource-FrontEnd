@@ -40,6 +40,13 @@ export class TokenInterceptor implements HttpInterceptor {
             // return this.handle401Error(request,next);
 
           }
+          if(err.status == 226){
+
+            this.toast.warning({detail:"Error", summary:err.error.message});
+            this.router.navigate(['signin']);
+            // return this.handle401Error(request,next);
+
+          }
         }
 
         return throwError(()=> new Error("Some Other Error Occured ! "))

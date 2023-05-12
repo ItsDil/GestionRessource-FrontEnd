@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import {jwt_} from "../model/Jwt_";
 import {MemberDepart} from "../model/MemberDepart";
 import {User} from "../model/User";
+import {Technicien} from "../model/Technicien";
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,15 @@ export class MembersDepartService {
      return this.http.delete<void>(this.backHost+"/auth/delete-memeber/"+id);
 
   }
+  getAllTechnicien(){
+    return this.http.get<any>(this.backHost+"/demo-Controller/Technicien")
+  }
 
+
+  public addTech(user:Technicien):Observable<jwt_>{
+
+    return this.http.post<jwt_>(this.backHost+"/auth/register",user);
+  }
 
 
 }

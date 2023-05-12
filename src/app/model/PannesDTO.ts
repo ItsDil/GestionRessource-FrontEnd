@@ -9,4 +9,9 @@ export interface PannesDTO {
   isThreated : boolean;
   datePanne : string;
   dateDemande:string;
+  constat:string;
+  dateConstat:string;
+  idFournisseur:number;
+  firstnameFour:string;
+  emailFour:string;
 }

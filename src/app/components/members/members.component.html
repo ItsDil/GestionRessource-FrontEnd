@@ -146,7 +146,7 @@
                     </div>
                     <div class="modal-footer md-button">
         <!--              <button class="btn btn-light-dark" data-bs-dismiss="modal">Discard</button>-->
-                      <button [disabled]="addMemberForm.invalid" type="submit" class="btn btn-primary">Save</button>
+                      <button [disabled]="addMemberForm.invalid" type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Save</button>
                     </div>
                   </form>
                 </div>
@@ -183,10 +183,10 @@
                       </div>
                     </div>
                     <div class="row g-5 mb-4">
-                      <div class="col-md-6">
-                        <label>Password</label>
-                        <input type="password" class="form-control" id="examplePasswordEdit" placeholder="password" formControlName="password">
-                      </div>
+<!--                      <div class="col-md-6">-->
+<!--                        <label>Password</label>-->
+<!--                        <input type="password" class="form-control" id="examplePasswordEdit" placeholder="password" formControlName="password">-->
+<!--                      </div>-->
                       <div class="col-md-6">
                         <label>Email</label>
                         <input type="email"  class="form-control" id="exampleEmailEdit" placeholder="email" formControlName="email">
@@ -212,7 +212,7 @@
                     </div>
                     <div class="modal-footer md-button">
                       <!--              <button class="btn btn-light-dark" data-bs-dismiss="modal">Discard</button>-->
-                      <button   type="submit" class="btn btn-primary">Edit</button>
+                      <button   type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Edit</button>
                     </div>
                   </form>
                 </div>

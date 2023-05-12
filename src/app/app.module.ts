@@ -18,7 +18,12 @@ import { SignalePanneComponent } from './components/signale-panne/signale-panne.
 import { AddTechnicienComponent } from './components/add-technicien/add-technicien.component';
 import { GererPanneTechComponent } from './components/gerer-panne-tech/gerer-panne-tech.component';
 import { AppelOffreComponent } from './components/appel-offre/appel-offre.component';
-import { GererConstatComponent } from './componenets/gerer-constat/gerer-constat.component';
+import { GererConstatComponent } from './components/gerer-constat/gerer-constat.component';
+import { AppelOffreCompleteComponent } from './components/appel-offre-complete/appel-offre-complete.component';
+import { OffreFourComponent } from './components/offre-four/offre-four.component';
+import { OffreRespComponent } from './components/offre-resp/offre-resp.component';
+import { AcceptOffreFourComponent } from './components/accept-offre-four/accept-offre-four.component';
+import { ErrorsComponent } from './components/errors/errors.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +37,12 @@ import { GererConstatComponent } from './componenets/gerer-constat/gerer-constat
     AddTechnicienComponent,
     GererPanneTechComponent,
     AppelOffreComponent,
-    GererConstatComponent
+    GererConstatComponent,
+    AppelOffreCompleteComponent,
+    OffreFourComponent,
+    OffreRespComponent,
+    AcceptOffreFourComponent,
+    ErrorsComponent
   ],
     imports: [
         BrowserModule,

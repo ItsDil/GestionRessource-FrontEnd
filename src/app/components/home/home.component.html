@@ -36,20 +36,22 @@
 
       <li class="nav-item dropdown notification-dropdown">
         <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="notificationDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class="badge badge-success"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          <span class="badge badge-danger" style=" background: red; width: 16px;height:16px; color: black;">{{messages.length}}</span>
         </a>
 
         <div class="dropdown-menu position-absolute" aria-labelledby="notificationDropdown">
           <div class="drodpown-title message">
             <h6 class="d-flex justify-content-between"><span class="align-self-center">Messages</span> <span class="badge badge-primary">9 Unread</span></h6>
           </div>
-          <div class="notification-scroll">
-            <div class="dropdown-item">
+          <div class="notification-scroll" style="height: auto">
+            <ng-container *ngFor="let msg of messages">
+              <div class="dropdown-item">
               <div class="media server-log">
                 <img src="../assets/assets/img/profile-16.jpg" class="img-fluid me-2" alt="avatar">
                 <div class="media-body">
                   <div class="data-info">
-                    <h6 class="">Kara Young</h6>
+                    <h6 class="">{{msg.message}}</h6>
                     <p class="">1 hr ago</p>
                   </div>
 
@@ -59,89 +61,17 @@
                 </div>
               </div>
             </div>
-
-            <div class="dropdown-item">
-              <div class="media ">
-                <img src="../assets/assets/img/profile-15.jpg" class="img-fluid me-2" alt="avatar">
-                <div class="media-body">
-                  <div class="data-info">
-                    <h6 class="">Daisy Anderson</h6>
-                    <p class="">8 hrs ago</p>
-                  </div>
-
-                  <div class="icon-status">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="dropdown-item">
-              <div class="media file-upload">
-                <img src="../assets/assets/img/profile-21.jpg" class="img-fluid me-2" alt="avatar">
-                <div class="media-body">
-                  <div class="data-info">
-                    <h6 class="">Oscar Garner</h6>
-                    <p class="">14 hrs ago</p>
-                  </div>
-
-                  <div class="icon-status">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </ng-container>
 
             <div class="drodpown-title notification mt-2">
-              <h6 class="d-flex justify-content-between"><span class="align-self-center">Notifications</span> <span class="badge badge-secondary">16 New</span></h6>
-            </div>
+              <ng-container *ngIf="role=='CHDP'">
+                  <h6 class="d-flex justify-content-between">
+                    <span class="align-self-center">Demande besoins</span>
+                    <button (click)="handleNotifyAllEns()" style="border: none;" class="badge badge-secondary">notifier</button>
+                  </h6>
 
-            <div class="dropdown-item">
-              <div class="media server-log">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-server"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
-                <div class="media-body">
-                  <div class="data-info">
-                    <h6 class="">Server Rebooted</h6>
-                    <p class="">45 min ago</p>
-                  </div>
+              </ng-container>
 
-                  <div class="icon-status">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="dropdown-item">
-              <div class="media file-upload">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                <div class="media-body">
-                  <div class="data-info">
-                    <h6 class="">Kelly Portfolio.pdf</h6>
-                    <p class="">670 kb</p>
-                  </div>
-
-                  <div class="icon-status">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="dropdown-item">
-              <div class="media ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                <div class="media-body">
-                  <div class="data-info">
-                    <h6 class="">Licence Expiring Soon</h6>
-                    <p class="">8 hrs ago</p>
-                  </div>
-
-                  <div class="icon-status">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                  </div>
-                </div>
-              </div>
             </div>
 
           </div>
@@ -234,7 +164,7 @@
 <!--          -->
           <ng-container *ngIf="role=='RESP'">
 
-            <a href="#GestionMember" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+            <a href="#GestionMember" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
               <div class=""  *ngIf="role=='RESP'">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 <span *ngIf="role=='RESP'">Gestion Membres</span>
@@ -244,7 +174,7 @@
               </div>
             </a>
 
-            <ul id="GestionMember" class="collapse submenu list-unstyled show" data-bs-parent="#accordionExample">
+            <ul id="GestionMember" class="collapse submenu list-unstyled " data-bs-parent="#accordionExample">
 
                 <li >
                   <a routerLink="/home/gestionMembers"> Membres Dep </a>
@@ -254,16 +184,41 @@
                 </li>
             </ul>
 
-<!--            <a href="#GestionConstats" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">-->
-<!--              <div class=""  *ngIf="role=='RESP'">-->
-<!--                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>-->
-<!--                <span *ngIf="role=='RESP'">Gestion Constats</span>-->
-<!--              </div>-->
-<!--            </a>-->
+            <a href="#GestionConstats" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+              <div class=""  *ngIf="role=='RESP'">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  width="30" height="30" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M15.586 2.586A2 2 0 0 0 14.172 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.828a2 2 0 0 0-.586-1.414zM16 18.75H8a.75.75 0 0 1 0-1.5h8a.75.75 0 0 1 0 1.5zm0-3H8a.75.75 0 0 1 0-1.5h8a.75.75 0 0 1 0 1.5zm0-3H8a.75.75 0 0 1 0-1.5h8a.75.75 0 0 1 0 1.5zM18.5 8H16a2 2 0 0 1-2-2V3.5h.171a.498.498 0 0 1 .354.146l3.828 3.829a.498.498 0 0 1 .147.354z" fill="#ffffff" data-original="#000000" class=""></path></g></svg>
+                <span *ngIf="role=='RESP'">Gestion Constats</span>
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+            </a>
 
-<!--            <ul id="GestionConstats" class="collapse submenu list-unstyled show" data-bs-parent="#accordionExample">-->
+            <ul id="GestionConstats" class="collapse submenu list-unstyled " data-bs-parent="#accordionExample">
+              <li>
+                <a  routerLink="/home/gererConstat" >Constat </a>
+              </li>
+            </ul>
 
-<!--            </ul>-->
+            <a href="#GestionAppelOffreComplete" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+              <div class=""  *ngIf="role=='RESP'">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  width="55" height="55" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path fill-rule="evenodd" d="m426.039 145.866-53.137-30.679-.434 1.395a19.125 19.125 0 0 1 4.501 12.343v11.245c0 8.072-5.005 14.998-12.074 17.836-2.886 6.762-9.602 11.513-17.406 11.513h-14.287c-7.805 0-14.521-4.751-17.407-11.513-7.069-2.839-12.074-9.764-12.074-17.836v-11.245c0-4.695 1.693-9.002 4.501-12.343l-.438-1.409-53.161 30.692 85.708 49.484zm-85.694-97.7c17.406 0 31.516 14.11 31.516 31.516 0 14.795-7.684 16.411-11.956 30.154-.704-.079-1.42-.12-2.145-.12h-10.414V89.569l10.014-5.782a6.984 6.984 0 0 0-7-12.086l-10.028 5.79-10.028-5.79a6.97 6.97 0 0 0-6.946 12.086l9.987 5.766v20.162H322.93c-.725 0-1.441.042-2.145.12-4.272-13.743-11.956-15.359-11.956-30.154 0-17.405 14.11-31.515 31.516-31.515zm7-18.534a7 7 0 1 1-14 0V19.5a7 7 0 1 1 14 0zm45.411 34.298a6.97 6.97 0 0 1-6.946-12.086l8.775-5.066a6.97 6.97 0 0 1 6.946 12.086zm-18.114-23.227 5.066-8.775a6.984 6.984 0 0 0-12.086-7l-5.066 8.775a6.984 6.984 0 0 0 12.086 7zm-79.763 11.141a6.97 6.97 0 0 1-6.946 12.086l-8.775-5.066a6.97 6.97 0 0 1 6.946-12.086zm23.254-18.141-5.066-8.775a6.984 6.984 0 0 0-12.086 7l5.066 8.775a6.984 6.984 0 0 0 12.086-7zm4.797 90.012h34.828c2.866 0 5.21 2.344 5.21 5.21v11.245c0 2.866-2.345 5.21-5.21 5.21h-5.356v5.224a4.93 4.93 0 0 1-4.915 4.915H333.2a4.93 4.93 0 0 1-4.915-4.915v-5.224h-5.355c-2.866 0-5.21-2.344-5.21-5.21v-11.245c.001-2.865 2.345-5.21 5.21-5.21zm21.148 249.442c-5.356 19.991-26.148 32.007-46.138 26.657l-86.916-23.289a6.991 6.991 0 0 1 3.61-13.508l86.888 23.28c12.75 3.226 25.48-4.116 29.046-16.752 3.249-12.834-4.276-25.68-16.752-29.022L248.423 323a6.953 6.953 0 0 1-2.548-1.282c-20.744-14.656-36.147-19.974-50.255-19.611-14.273.368-28.125 6.604-45.103 14.906a3973.878 3973.878 0 0 1-46.214 22.206l40.507 97.265 15.583-7.576c11.431-5.557 23.153-6.541 35.356-2.998l72.122 20.941c19.041 5.529 43.881-4.137 63.585-11.806 46.521-18.099 93.175-35.917 139.756-53.867 10.89-4.196 18.743-15.031 20.791-25.984 1.456-7.787-.056-15.77-6.632-20.788-8.236-6.284-23.89-8.153-49.569-.62l-90.579 26.573a37.313 37.313 0 0 1-1.145 12.798zM133.372 483.973l-34.674 14.398c-7.523 3.124-16.205-.458-19.337-7.978l-58.714-140.99a14.732 14.732 0 0 1 7.986-19.357l34.674-14.398c7.523-3.124 16.205.458 19.337 7.978l58.715 140.989a14.733 14.733 0 0 1-7.987 19.358zm157.142-259.862-85.708-49.484 35.878-20.714 85.709 49.484zm-42.831-8.601 39.331 22.708a6.982 6.982 0 0 0 7.076-.044l39.255-22.663v90.885l-85.662-49.457zm192.336-61.589 35.864 20.706-85.722 49.492-35.864-20.706zm-92.675 61.573 38.955 22.491a6.986 6.986 0 0 0 7.376.233l39.33-22.708v41.413l-85.661 49.456z" clip-rule="evenodd" fill="#ffffff" data-original="#000000" class=""></path></g></svg>
+                <span *ngIf="role=='RESP'">Appel Offre</span>
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+            </a>
+
+            <ul id="GestionAppelOffreComplete" class="collapse submenu list-unstyled " data-bs-parent="#accordionExample">
+
+              <li >
+                <a routerLink="/home/appelOffreComplete">Mini Apple Offre </a>
+              </li>
+              <li >
+                <a routerLink="/home/offreResp">Offre </a>
+              </li>
+            </ul>
           </ng-container>
 
           <!--          -->
@@ -271,8 +226,8 @@
 
             <a href="#GestionProposition" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
               <div class="" *ngIf="role=='FOUR'">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                <span >Gestion Propositions</span>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"  width="55" height="55" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path fill-rule="evenodd" d="m426.039 145.866-53.137-30.679-.434 1.395a19.125 19.125 0 0 1 4.501 12.343v11.245c0 8.072-5.005 14.998-12.074 17.836-2.886 6.762-9.602 11.513-17.406 11.513h-14.287c-7.805 0-14.521-4.751-17.407-11.513-7.069-2.839-12.074-9.764-12.074-17.836v-11.245c0-4.695 1.693-9.002 4.501-12.343l-.438-1.409-53.161 30.692 85.708 49.484zm-85.694-97.7c17.406 0 31.516 14.11 31.516 31.516 0 14.795-7.684 16.411-11.956 30.154-.704-.079-1.42-.12-2.145-.12h-10.414V89.569l10.014-5.782a6.984 6.984 0 0 0-7-12.086l-10.028 5.79-10.028-5.79a6.97 6.97 0 0 0-6.946 12.086l9.987 5.766v20.162H322.93c-.725 0-1.441.042-2.145.12-4.272-13.743-11.956-15.359-11.956-30.154 0-17.405 14.11-31.515 31.516-31.515zm7-18.534a7 7 0 1 1-14 0V19.5a7 7 0 1 1 14 0zm45.411 34.298a6.97 6.97 0 0 1-6.946-12.086l8.775-5.066a6.97 6.97 0 0 1 6.946 12.086zm-18.114-23.227 5.066-8.775a6.984 6.984 0 0 0-12.086-7l-5.066 8.775a6.984 6.984 0 0 0 12.086 7zm-79.763 11.141a6.97 6.97 0 0 1-6.946 12.086l-8.775-5.066a6.97 6.97 0 0 1 6.946-12.086zm23.254-18.141-5.066-8.775a6.984 6.984 0 0 0-12.086 7l5.066 8.775a6.984 6.984 0 0 0 12.086-7zm4.797 90.012h34.828c2.866 0 5.21 2.344 5.21 5.21v11.245c0 2.866-2.345 5.21-5.21 5.21h-5.356v5.224a4.93 4.93 0 0 1-4.915 4.915H333.2a4.93 4.93 0 0 1-4.915-4.915v-5.224h-5.355c-2.866 0-5.21-2.344-5.21-5.21v-11.245c.001-2.865 2.345-5.21 5.21-5.21zm21.148 249.442c-5.356 19.991-26.148 32.007-46.138 26.657l-86.916-23.289a6.991 6.991 0 0 1 3.61-13.508l86.888 23.28c12.75 3.226 25.48-4.116 29.046-16.752 3.249-12.834-4.276-25.68-16.752-29.022L248.423 323a6.953 6.953 0 0 1-2.548-1.282c-20.744-14.656-36.147-19.974-50.255-19.611-14.273.368-28.125 6.604-45.103 14.906a3973.878 3973.878 0 0 1-46.214 22.206l40.507 97.265 15.583-7.576c11.431-5.557 23.153-6.541 35.356-2.998l72.122 20.941c19.041 5.529 43.881-4.137 63.585-11.806 46.521-18.099 93.175-35.917 139.756-53.867 10.89-4.196 18.743-15.031 20.791-25.984 1.456-7.787-.056-15.77-6.632-20.788-8.236-6.284-23.89-8.153-49.569-.62l-90.579 26.573a37.313 37.313 0 0 1-1.145 12.798zM133.372 483.973l-34.674 14.398c-7.523 3.124-16.205-.458-19.337-7.978l-58.714-140.99a14.732 14.732 0 0 1 7.986-19.357l34.674-14.398c7.523-3.124 16.205.458 19.337 7.978l58.715 140.989a14.733 14.733 0 0 1-7.987 19.358zm157.142-259.862-85.708-49.484 35.878-20.714 85.709 49.484zm-42.831-8.601 39.331 22.708a6.982 6.982 0 0 0 7.076-.044l39.255-22.663v90.885l-85.662-49.457zm192.336-61.589 35.864 20.706-85.722 49.492-35.864-20.706zm-92.675 61.573 38.955 22.491a6.986 6.986 0 0 0 7.376.233l39.33-22.708v41.413l-85.661 49.456z" clip-rule="evenodd" fill="#ffffff" data-original="#000000" class=""></path></g></svg>
+                <span >Gestion Offre</span>
 
               </div>
               <div>
@@ -282,11 +237,11 @@
 
             <ul id="GestionProposition" class="collapse submenu list-unstyled show" data-bs-parent="#accordionExample">
                 <li >
-                  <a > Soumettre Prop </a>
+                  <a routerLink="/home/offreFour"> Créer l'Offre </a>
                 </li>
-                <li>
-                  <a >Mes Propositions </a>
-                </li>
+              <li >
+                <a routerLink="/home/acceptOffreFour"> Vos soumission </a>
+              </li>
             </ul>
           </ng-container>
 

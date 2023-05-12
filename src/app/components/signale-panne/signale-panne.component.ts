@@ -1,5 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import {RessourcesDTO} from "../../model/RessourcesDTO";
+import {LoginService} from "../../services/login.service";
+import {BesoinService} from "../../services/besoin.service";
+import {RessourcesDTOEns} from "../../model/RessourcesDTOEns";
+import {PanneDTO_Ens} from "../../model/PanneDTO_Ens";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-signale-panne',
@@ -11,7 +17,11 @@ export class SignalePanneComponent implements OnInit{
   ressources:any[]=[];
   ress:any ;
 
-  constructor() {
+  ressourceDtoense!: RessourcesDTOEns;
+
+
+
+  constructor(private loginService : LoginService, private besoinService:BesoinService) {
   }
 
   ngOnInit(): void {
@@ -38,6 +48,29 @@ export class SignalePanneComponent implements OnInit{
     this.ressources.push(testOrd);
 
     console.log(this.ressources)
+
+
+    this.handleGetAllRessourcesEnse()
+
+
+  }
+
+
+  handleGetAllRessourcesEnse(){
+    let idEnse:number = this.loginService.getIdMemeber();
+
+    this.besoinService.getAllRessourceEnse(idEnse).subscribe({
+      next: (data)=>{
+        this.ressourceDtoense = data;
+
+        console.log("this is all ress ense : ",data)
+      },
+      error: (err)=>{
+
+      }
+    })
+
+
   }
 
 
@@ -81,24 +114,37 @@ export class SignalePanneComponent implements OnInit{
 
   handleSetStatus(ress: any) {
 
-    let status  = ress.status;
-    if (status == "Panne")
-      ress.status = "Good";
+    let status  = ress.etat;
+    if (status)
+      ress.etat = false;
     else
-      ress.status = "Panne";
-  /*
+      ress.etat = true;
 
-  *     let promo = p.promotion;
-    this.productService.SetPromotion(p.id).subscribe(
+
+    let idEnse:number = this.loginService.getIdMemeber();
+    let idRessource = ress.id;
+
+    let panneDtoEnse : PanneDTO_Ens={
+       idMembreDepartement:idEnse,
+       idRessource:idRessource
+    }
+
+    this.besoinService.setPanne(panneDtoEnse).subscribe(
       {
         next : (data)=>{
-          p.promotion = !promo;
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Modification Avec Success',
+            showConfirmButton: false,
+            timer: 1500
+          })
           // console.log(this.products)
         },
         error : (err)=>{
-          this.errorMessage = err;
+
         }
-      });*/
+      });
 
 
   }

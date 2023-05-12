@@ -35,36 +35,47 @@
             </thead>
             <tbody id ="openModelShowRess">
 <!--            <tr *ngFor="let ress of ressources" data-bs-toggle="modal" data-bs-target="#zoomupModal_ShowRess">-->
-            <tr *ngFor="let ress of ressources" (click)="handleShowRess(ress)">
+              <ng-container *ngIf="ressourceDtoense">
+               <tr *ngFor="let ress of ressourceDtoense.ressourcesDTOList" (click)="handleShowRess(ress)">
 
-              <td>
-                <div class="form-check form-check-primary">
-                  <input class="form-check-input noBorder_child" type="checkbox">
-                </div>
-              </td>
-              <td>{{ress.id}}</td>
-              <td class="">{{ress.typeRessource}}</td>
-              <td>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                <span class="table-inner-text">{{ress.dateAjout}}</span>
-              </td>
-              <td class="text-center">
-                <button  (click)="handleSetStatus(ress);  $event.stopPropagation()"  [ngClass]="ress.status=='Panne'?'badge badge-danger':'badge badge-success'" style="border: none; width: 80px; font-size: 14px;">
-                  <span *ngIf="ress.status=='Panne'"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"   width="24" height="24" x="0" y="0" viewBox="0 0 512.002 512.002" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M366.376 271.127h-60.375l72.375-96.5a15 15 0 0 0-12-24H325.77l35.1-131.764a15 15 0 0 0-7.508-17.135 14.994 14.994 0 0 0-18.375 3.512l-180.75 210.875a15 15 0 0 0 11.389 24.761h40.375l-72.375 96.5a15 15 0 0 0 12 24h40.606L151.131 493.14a15 15 0 0 0 25.36 14.204l200.75-210.875a15 15 0 0 0-10.865-25.342z" fill="#ffffff" data-original="#000000" class=""></path></g></svg>{{ress.status}}</span>
-                  <span *ngIf="ress.status=='Good'"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"  width="24" height="24" x="0" y="0" viewBox="0 0 417.813 417" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M159.988 318.582c-3.988 4.012-9.43 6.25-15.082 6.25s-11.094-2.238-15.082-6.25L9.375 198.113c-12.5-12.5-12.5-32.77 0-45.246l15.082-15.086c12.504-12.5 32.75-12.5 45.25 0l75.2 75.203L348.104 9.781c12.504-12.5 32.77-12.5 45.25 0l15.082 15.086c12.5 12.5 12.5 32.766 0 45.246zm0 0" fill="#ffffff" data-original="#000000" class=""></path></g></svg>{{ress.status}}</span>
+                  <td>
+                    <div class="form-check form-check-primary">
+                      <input class="form-check-input noBorder_child" type="checkbox">
+                    </div>
+                  </td>
+                  <td>{{ress.id}}</td>
+                  <td class="">{{ress.typeRessource}}</td>
+                  <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span class="table-inner-text">{{ress.dateDemande}}</span>
+                  </td>
+                  <td class="text-center">
+                    <button  (click)="handleSetStatus(ress);  $event.stopPropagation()"  [ngClass]="ress.etat==true?'badge badge-danger':'badge badge-success'" style="border: none; width: 80px; font-size: 14px;">
+                    <span *ngIf="ress.etat"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"   width="24" height="24" x="0" y="0" viewBox="0 0 512.002 512.002" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M366.376 271.127h-60.375l72.375-96.5a15 15 0 0 0-12-24H325.77l35.1-131.764a15 15 0 0 0-7.508-17.135 14.994 14.994 0 0 0-18.375 3.512l-180.75 210.875a15 15 0 0 0 11.389 24.761h40.375l-72.375 96.5a15 15 0 0 0 12 24h40.606L151.131 493.14a15 15 0 0 0 25.36 14.204l200.75-210.875a15 15 0 0 0-10.865-25.342z" fill="#ffffff" data-original="#000000" class=""></path></g></svg>
+                     <ng-container *ngIf="ress.etat">
+                       Panne
+                     </ng-container>
+                    </span>
+                    <span *ngIf="!ress.etat"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"  width="24" height="24" x="0" y="0" viewBox="0 0 417.813 417" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M159.988 318.582c-3.988 4.012-9.43 6.25-15.082 6.25s-11.094-2.238-15.082-6.25L9.375 198.113c-12.5-12.5-12.5-32.77 0-45.246l15.082-15.086c12.504-12.5 32.75-12.5 45.25 0l75.2 75.203L348.104 9.781c12.504-12.5 32.77-12.5 45.25 0l15.082 15.086c12.5 12.5 12.5 32.766 0 45.246zm0 0" fill="#ffffff" data-original="#000000" class=""></path></g></svg>
+                     <ng-container *ngIf="!ress.etat">
+                       Good
+                     </ng-container>
+                   </span>
 
-                </button>
-              </td>
+                    </button>
+                  </td>
 
-<!--
-            <td *ngIf="authenService.hasRole('ADMIN')">
-              <button (click)="handleSetPromotion(p)" [ngClass]="p.promotion==true?'btn btn-warning':'btn btn-success'">
-                <span *ngIf="p.promotion==true">Promo Off</span>
-                <span *ngIf="p.promotion==false">Promo On</span>
-              </button>
-            </td>
--->
-            </tr>
+                  <!--
+                              <td *ngIf="authenService.hasRole('ADMIN')">
+                                <button (click)="handleSetPromotion(p)" [ngClass]="p.promotion==true?'btn btn-warning':'btn btn-success'">
+                                  <span *ngIf="p.promotion==true">Promo Off</span>
+                                  <span *ngIf="p.promotion==false">Promo On</span>
+                                </button>
+                              </td>
+                  -->
+                </tr>
+
+              </ng-container>
             </tbody>
           </table>
         </div>
@@ -97,12 +108,12 @@
                       </div>
                       <div class="col-md-6">
                         <label >Resolution</label>
-                        <input value="{{ress.resolution}}"  type="text" class="form-control" style="color: black!important;"  readonly>
+                        <input value="{{ress.imprOrd.resolution}}"  type="text" class="form-control" style="color: black!important;"  readonly>
 
                       </div>
                       <div class="col-md-6">
                         <label >Vitesse</label>
-                        <input value="{{ress.vitesse}}" type="text" class="form-control"  style="color: black!important;" readonly >
+                        <input value="{{ress.imprOrd.vitesse}}" type="text" class="form-control"  style="color: black!important;" readonly >
 
                       </div>
                     </div>
@@ -110,26 +121,24 @@
                       <div class="col-md-12">
                         <label >Type Ressource</label>
                         <input value="{{ress.typeRessource}}"  type="text" class="form-control" style="color: black!important;"  readonly >
-
                       </div>
                       <div class="col-md-6">
                         <label >RAM</label>
-                        <input value="{{ress.ram}}"  type="text" class="form-control" style="color: black!important;"  readonly >
+                        <input value="{{ress.imprOrd.ram}}"  type="text" class="form-control" style="color: black!important;"  readonly >
 
                       </div>
                       <div class="col-md-6">
                         <label >Ecran</label>
-                        <input value="{{ress.ecran}}" type="text" class="form-control" style="color: black!important;"  readonly>
+                        <input value="{{ress.imprOrd.ecran}}" type="text" class="form-control" style="color: black!important;"  readonly>
 
                       </div>
                       <div class="col-md-6">
                         <label >Stockage</label>
-                        <input value="{{ress.stockage}}" type="text" class="form-control" style="color: black!important;"  readonly >
+                        <input value="{{ress.imprOrd.stockage}}" type="text" class="form-control" style="color: black!important;"  readonly >
                       </div>
                       <div class="col-md-6">
                         <label >CPU</label>
-                        <input value="{{ress.cpu}}" type="text" class="form-control" style="color: black!important;"  readonly >
-
+                        <input value="{{ress.imprOrd.cpu}}" type="text" class="form-control" style="color: black!important;"  readonly >
                       </div>
                     </div>
 
@@ -148,5 +157,5 @@
         </div>
       </div>
 
-  <!--  </div>-->
-</div>
+    </div>
+

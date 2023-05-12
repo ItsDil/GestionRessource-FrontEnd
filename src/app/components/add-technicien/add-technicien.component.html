@@ -35,6 +35,7 @@
             <th class="text-center" scope="col">ID</th>
             <th class="text-center" scope="col">First Name</th>
             <th class="text-center" scope="col">Last Name</th>
+            <th class="text-center" scope="col">Email</th>
             <th class="text-center" scope="col">Speciality</th>
             <th class="text-center" scope="col">Date Embauche</th>
 
@@ -42,17 +43,20 @@
           </thead>
           <tbody id ="openModelShowRess">
           <!--            <tr *ngFor="let ress of ressources" data-bs-toggle="modal" data-bs-target="#zoomupModal_ShowRess">-->
-          <tr >
+          <tr *ngFor="let user of users; let i =index">
 
-            <td>
+
+          <td>
               <div class="form-check form-check-primary">
                 <input class="form-check-input noBorder_child" type="checkbox">
               </div>
             </td>
-            <td class="text-center">1</td>
-            <td class="text-center">yassar</td>
-            <td class="text-center">Saadani</td>
-            <td class="text-center">INFO</td>
+            <td class="checkbox-column "> {{i+1}}</td>
+            <td>{{user.firstname}}</td>
+            <td>{{user.lastname}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.speciality}}</td>
+
             <td class="text-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
               <span class="table-inner-text">25 avr</span>
@@ -90,28 +94,28 @@
         </div>
         <div class="modal-body">
           <div class="container">
-            <form>
+            <form [formGroup]="formAddTech">
               <div class="row g-5 mb-4">
                 <div class="col-md-6">
                   <label >First Name</label>
-                  <input type="text" class="form-control"   placeholder="name .. " >
+                  <input type="text" class="form-control" formControlName="firstname"   placeholder="name .. " >
 
                 </div>
                 <div class="col-md-6">
                   <label >Last Name</label>
-                  <input type="text" class="form-control"   placeholder="last name .. " >
+                  <input type="text" class="form-control" formControlName="lastname"   placeholder="last name .. " >
 
                 </div>
               </div>
               <div class="row g-5 mb-4">
                 <div class="col-md-6">
                   <label>Password</label>
-                  <input type="password" class="form-control"   placeholder="password .. " >
+                  <input type="password" class="form-control"  formControlName="password"   placeholder="password .. " >
 
                 </div>
                 <div class="col-md-6">
                   <label>Email</label>
-                  <input type="email" class="form-control"   placeholder="email .." >
+                  <input type="email" class="form-control"  formControlName="email"   placeholder="email .." >
 
                 </div>
               </div>
@@ -119,12 +123,12 @@
               <div class="row g-5 mb-4">
                 <div class="col-md-6">
                   <label>Speciality</label>
-                  <input type="email" class="form-control"   placeholder="speciality .. ">
+                  <input type="email" class="form-control"  formControlName="speciality"   placeholder="speciality .. ">
                 </div>
               </div>
               <div class="modal-footer md-button">
                 <!--              <button class="btn btn-light-dark" data-bs-dismiss="modal">Discard</button>-->
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button [disabled]="!formAddTech.valid" type="submit" (click)="handleAddTech()" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Save</button>
               </div>
             </form>
           </div>

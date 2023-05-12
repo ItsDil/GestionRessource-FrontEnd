@@ -38,11 +38,12 @@
               "src/assets/plugins/css/light/table/datatable/custom_dt_custom.css",
               "src/assets/plugins/src/animate/animate.css",
               "src/assets/assets/css/light/components/modal.css",
+              "src/assets/assets/css/light/components/accordions.css",
               "src/assets/assets/css/light/apps/blog-create.css",
-              "src/assets/assets/css/light/forms/switches.css",
               "node_modules/flatpickr/dist/flatpickr.css",
               "src/assets/assets/css/light/apps/todolist.css",
-              "src/assets/assets/css/light/elements/tooltip.css"
+              "src/assets/assets/css/light/elements/tooltip.css",
+              "src/assets/assets/css/light/pages/error/error.css"
 
             ],
             "scripts": [

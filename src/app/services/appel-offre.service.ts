@@ -5,6 +5,8 @@ import {Added_Besoin} from "../model/Besoin";
 import {Observable} from "rxjs";
 import {appelOffre} from "../model/appelOffre";
 import {BesoinValide} from "../model/BesoinsValide";
+import {AppelOffreDTO} from "../model/AppelOffreDTO";
+import {offreDTOResp} from "../model/OffreDTOResp";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,8 @@ export class AppelOffreService {
   public MiniAppleOffreValider(besoinValider:BesoinValide):Observable<void>{
     return this.http.post<void>(this.backHost+"/Besoin-Controller/appel-offre-validation",besoinValider)
   }
+
+
 
 
 

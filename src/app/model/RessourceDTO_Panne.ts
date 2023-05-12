@@ -3,6 +3,7 @@
 export interface RessourceDTO_Panne{
   id:number;
   codeBarre:string;
+  dateFinGarantie:string;
 }
 export interface Ordinateur extends RessourceDTO_Panne {
   cpu:String;

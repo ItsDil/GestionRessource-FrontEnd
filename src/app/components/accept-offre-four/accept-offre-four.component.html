@@ -1,0 +1,90 @@
+<div class="layout-px-spacing"  style="margin-right: 40px; margin-left: 40px;" >
+
+  <!--  <div class="middle-content container-xxl p-0">-->
+
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-wrapper-content mb-1 mt-2 d-flex start" style="background:white; width: 100%; ">
+    <nav class="breadcrumb-style-two  mb-2" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span class="inner-text">Home</span></a></li>
+        <li class="breadcrumb-item"><a href="#">Gestion Offre</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Vos Soumission</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- /BREADCRUMB -->
+
+  <div class="widget-content widget-content-area" style="padding: 20px; margin-top: 40px; width: 50%;">
+
+    <ng-container *ngFor="let off of OffresFour">
+      <ng-container *ngIf="off.etat == 'ACCEPTED'">
+        <!-- Bg Primary -->
+        <div class="card style-5 bg-success mb-md-0 mb-4">
+          <div class="card-top-content">
+            <div class="avatar avatar-md">
+              <img alt="avatar" src="../../../../assets/assets/img/profile-12.jpg" class="rounded-circle">
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-body" style="padding:16px 20px;">
+              <h4 class=" mb-2">{{off.firstnameFour}}</h4>
+              <p class="card-text" style="font-size: 15px;">
+                je suis heureux de vous informer que votre entreprise a été sélectionnée en tant que fournisseur pour notre entreprise pour cette appel offre.
+              </p>
+
+              <div class="row layout-spacing layout-top-spacing" style="padding-bottom: 10px; margin-top: 0px;" >
+
+                <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 col-sm-12" style="position: relative;">
+                  <p class="text-white mb-0 " style="font-size: 15px; position: absolute; bottom: 0;">2023-02-16</p>
+                </div>
+
+                <div class="col-xxl-5 col-xl-12 col-lg-12 col-md-12 col-sm-12" style="position: relative;">
+
+                  <button (click)="handleAffectOffres(off.id)" class="btn btn-light w-35" style="background: white; margin-left: 120px; margin-top: 10px;">
+                    <span class="btn-text-inner ms-3">Accepter</span>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </ng-container>
+
+
+      <ng-container *ngIf="off.etat == 'REJECTED'">
+        <!-- Bg Primary -->
+        <div class="card style-5 bg-danger mb-md-0 mb-4">
+          <div class="card-top-content">
+            <div class="avatar avatar-md">
+              <img alt="avatar" src="../../../../assets/assets/img/profile-12.jpg" class="rounded-circle">
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-body" style="padding:16px 20px;">
+              <h4 class=" mb-2">{{off.firstnameFour}}</h4>
+              <p class="card-text" style="font-size: 15px;">
+                Merci pour votre offre, mais nous avons décidé de ne pas la retenir pour le moment.
+              </p>
+
+              <div class="row layout-spacing layout-top-spacing" style="padding-bottom: 10px; margin-top: 0px;" >
+
+                <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <p class="text-white mb-0 " style="margin-top: 20px; margin-bottom: 20px; font-size: 15px; ">2023-02-16</p>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </ng-container>
+
+    </ng-container>
+
+  </div>
+
+</div>

@@ -49,7 +49,7 @@
             <th scope="col">Enseignant</th>
             <th scope="col">Email</th>
             <th class="" scope="col">Type Ressource</th>
-            <th class="" scope="col">Date Affecation</th>
+            <th class="" scope="col">Date Panne</th>
             <th class="text-center" scope="col">Action</th>
 
           </tr>
@@ -95,7 +95,7 @@
       </div>
 
     </div>
-  <div id="zoomupModal_GeneConstat"  class="modal animated zoomInUp custo-zoomInUp" role="dialog">
+    <div id="zoomupModal_GeneConstat"  class="modal animated zoomInUp custo-zoomInUp" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content" style="width: 700px">
@@ -107,7 +107,7 @@
         </div>
         <div class="modal-body">
           <div class="container">
-            <form >
+            <form [formGroup]="formSetConstat">
 
               <ng-container *ngIf="panneConstat">
 
@@ -155,10 +155,10 @@
                 </div>
 
               </ng-container>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" formControlName="constat"> </textarea>
               <div class="modal-footer md-button">
                 <!--              <button class="btn btn-light-dark" data-bs-dismiss="modal">Discard</button>-->
-                <button   type="submit" class="btn btn-primary">Envoie</button>
+                <button (click)="handleSetConstat(panneConstat)"  type="submit" class="btn btn-primary">Envoie</button>
               </div>
             </form>
           </div>

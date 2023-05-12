@@ -38,6 +38,7 @@ export class AppelOffreComponent implements OnInit{
   handleGetMiniAppelOffre(){
     this.appelOffreService.getMiniAppelOffre(this.idMember).subscribe({
       next: (data)=>{
+
         this.miniAppels = data;
         console.log(data)
 
@@ -88,7 +89,6 @@ export class AppelOffreComponent implements OnInit{
     for (let i of this.besoinValides.besoinChecked) {
       if (i == idBesoin) {
         indice = i;
-        console.log("kayn")
       }
     }
     console.log()
@@ -101,13 +101,13 @@ export class AppelOffreComponent implements OnInit{
         this.besoinValides.besoinChecked.splice(indexToRemove, 1)
       }
     }
-    console.log("checked : " + this.besoinValides.besoinChecked)
 
   }
 
   handleMiniAppelOffreValider() {
     this.appelOffreService.MiniAppleOffreValider(this.besoinValides).subscribe({
       next: (data)=>{
+        this.handleGetMiniAppelOffre()
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -122,6 +122,7 @@ export class AppelOffreComponent implements OnInit{
       error: (err)=>{
 
       }
+
 
     })
   }

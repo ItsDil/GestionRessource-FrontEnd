@@ -79,14 +79,26 @@ export class LoginService {
     }
   }
 
+  getDepartMemeber(){
+    if(this.userPayload){
+      return this.userPayload.departement
+    }
+  }
+
   getRoleFromToken():any{
     if(this.userPayload){
       let rolename:string="";
-      this.userPayload.roles.forEach((role:roles)=>{
-        rolename = role.rolename;
-
+      this.userPayload.roles.forEach((role:string)=>{
+        rolename = role;
       });
       return rolename;
+    }
+  }
+
+  getRoles():any{
+    if(this.userPayload){
+      return  this.userPayload.roles;
+      console.log("jlgjelrg ",this.userPayload.roles)
     }
   }
 
